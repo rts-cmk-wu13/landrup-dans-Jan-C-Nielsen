@@ -3,13 +3,13 @@ export default function DetSigerVoresKunderOmOsCard({  bodytext, name, occupatio
 
 
     return (
-        <section className="m-[27px] flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-            <p className="max-w-md  text-white leading-8">
+        <section className="m-[27px] flex flex-col items-center gap-6">
+            <p className="text-center w-[239px] text-white text-[16]">
             {bodytext}  </p>
-              <h2 className=" max-w-xs text-[18]  text-white">
+              <h2 className="  text-[20] text-bold  text-white">
                 {name} 
             </h2>
-           <small>{occupation}</small>
+           <small  className="text-[16]  text-white">{occupation}</small>
           
         </section>
     )

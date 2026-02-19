@@ -17,13 +17,13 @@ export default function Nyhedsbrev() {
     const [state, formAction, isPending] = useActionState(loginUser, initialState);
 
     return (
-        <section className="text-white m-[27] flex flex-col  sm:items-start sm:text-left">
-            <h2  className="text-[36px]    font-semibold " >Nyhedsbrev</h2>
-            <p>Få direkte besked når vi har sæsonstart eller afholder arrangementer.</p>
-            <form className = " text-white flex mx-auto" action={formAction} noValidate>
+        <section className="flex items-center justify-center text-white m-[27] flex flex-col ">
+            <h2  className=" text-[36px] font-semibold " >Nyhedsbrev</h2>
+            <p  className="text-[18px] mb-[18px]">Få direkte besked når vi har sæsonstart eller afholder arrangementer.</p>
+            <form className = "  text-white flex" action={formAction} noValidate>
                    <div>
                     <div>
-                        <input  className = "bg-white text-black mr-[27px]" type="email" name="email" defaultValue={state.values.email}></input>
+                        <input   placeholder="Email" className = " w-full p-[13]  bg-white text-black mr-[27px]" type="email" name="email" defaultValue={state.values.email}></input>
                         {state.errors?.email && <p>{state.errors.email}</p>}
                     </div>
 

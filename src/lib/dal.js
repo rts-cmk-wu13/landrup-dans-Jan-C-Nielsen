@@ -11,7 +11,7 @@ export async function tellAllToThePriest() {
     try {
         const response = await fetch("http://localhost:4000/api/v1/testimonials");
 
-        //Response.ok is false for any status outside 200–299.
+        //Response.ok is false for 404.
         if (response.status === 404) {
             return notFound();
         }

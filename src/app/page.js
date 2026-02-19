@@ -1,8 +1,16 @@
 import Image from "next/image";
 import HoldtypeCard from "./components/HoldtypeCard";
 import Nyhedsbrev from "./components/Nyhedsbrev";
+import DetSigerVoresKunderOmOsCard from "./components/DetSigerVoresKunderOmOsCard";
+import Karusel from "./components/Karusel";
+import { tellAllToThePriest } from "../lib/dal.js"
 
-export default function Home() {
+
+export default async function Home() {
+
+  const vidnesbyrd = await tellAllToThePriest();
+console.log(vidnesbyrd)
+
   return (
     <div className=" flex min-h-screen items-center justify-center">
       <main className="  bg-[#000000]">
@@ -31,6 +39,8 @@ export default function Home() {
         <HoldtypeCard headline="Streetdance og hiphop" pic="/streethiphop.jpg" bodytext=" Streetdance og hiphop er energifyldt træning med fokus på rytme, attitude og fællesskab. Vi arbejder med grooves, koreografier og grundtrin, der styrker kondition og koordination. Stemningen er uformel og motiverende, så motion og danseglæde går hånd i hånd." />
 
         <Nyhedsbrev />
+
+        <Karusel vidnesbyrd={vidnesbyrd}/>
       </main>
     </div>
   );

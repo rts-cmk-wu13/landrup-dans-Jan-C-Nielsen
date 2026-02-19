@@ -6,16 +6,16 @@ import { redirect } from "next/navigation"
 
 const loginSchema = z.object({
     email: z.email("Indtast gyldig email"),
-  
+
 })
 
 
 
-export async function loginUser(prevState, formData) { 
+export async function loginUser(prevState, formData) {
 
-   
+
     const email = formData.get("email");
-   
+
     console.log(email);
     if (email === prevState.values.email)
         return prevState;
@@ -49,14 +49,14 @@ export async function loginUser(prevState, formData) {
         return {
             values: {
                 email
-               
+
             },
             errors: { form: ["Forkert email"] }
         }
     }
 
     const data = await response.json();
-console.log(data)
+    console.log(data)
 
     return redirect("/")
 

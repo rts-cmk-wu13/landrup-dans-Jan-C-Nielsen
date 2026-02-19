@@ -4,7 +4,7 @@ import Nyhedsbrev from "./components/Nyhedsbrev";
 import DetSigerVoresKunderOmOsCard from "./components/DetSigerVoresKunderOmOsCard";
 import Karusel from "./components/Karusel";
 import { tellAllToThePriest } from "../lib/dal.js"
-
+import KontaktForm  from "./components/KontaktForm";
 
 export default async function Home() {
 
@@ -41,6 +41,8 @@ console.log(vidnesbyrd)
         <Nyhedsbrev />
 
         <Karusel vidnesbyrd={vidnesbyrd}/>
+
+        <KontaktForm/>
       </main>
     </div>
   );

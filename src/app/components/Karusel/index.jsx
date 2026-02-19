@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import DetSigerVoresKunderOmOsCard from "../DetSigerVoresKunderOmOsCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 export default function Karusel({ vidnesbyrd }) {

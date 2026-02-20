@@ -3,14 +3,18 @@ import { getAllActivities } from "@/lib/dal";
 import Footer from "../components/footer";
 import Image from "next/image";
 import Link from "next/link";
+import SearchPage from "../search/page";
 
-export default async function aktiviteter() {
+export default async function aktiviteter({searchParams}) {
 
-    const aktiviteter = await getAllActivities();
+    const searchstr = searchParams != null ? (await searchParams).searchstr : null;
+   
+    const aktiviteter = await getAllActivities(searchstr);
     console.log(aktiviteter)
 
     return (
         <main className="bg-[#003147] w-[411px] mx-auto flex flex-col items-center justify-center text-white">
+            <SearchPage/>
             <h2 className="ml-[27] text-[36px] self-start w-full text-left">Aktiviteter</h2>
             <ul>
                 {aktiviteter.map((aktivitet) => {
@@ -28,7 +32,7 @@ export default async function aktiviteter() {
                                         unoptimized
                                     ></Image>
                                     <div className="absolute bottom-0 left-0 w-full text-white bg-black/60 p-3 rounded-[0px_39px_0px_39px]">
-                                        <p  className="text-[22px]">  {aktivitet.name}</p>
+                                        <p className="text-[22px]">  {aktivitet.name}</p>
                                         <p> {aktivitet.minAge} -  {aktivitet.maxAge} år</p>
                                     </div>
                                 </div>
@@ -37,7 +41,7 @@ export default async function aktiviteter() {
                     );
                 })}
             </ul>
-
+            <Footer />
         </main>
 
     )

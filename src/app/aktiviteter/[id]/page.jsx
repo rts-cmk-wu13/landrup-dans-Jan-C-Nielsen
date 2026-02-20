@@ -1,6 +1,6 @@
 
 
-//import Footer from "../components/footer";
+import Footer from "../../components/footer";
 import { getActivitie } from "@/lib/dal";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +28,7 @@ export default async function aktiviteter({ params }) {
                     <p> {aktivitet.description}</p>
                 </div>
             </div>
+            <Footer/>
         </main>
 
     )

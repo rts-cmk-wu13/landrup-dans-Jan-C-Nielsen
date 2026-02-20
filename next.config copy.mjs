@@ -2,12 +2,8 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '4000',
-        pathname: '/file-bucket/**',
-      },
+      new URL('https://mosaic.scdn.co/**'),
+      new URL('https://i.scdn.co/**'),
     ],
   },
 };

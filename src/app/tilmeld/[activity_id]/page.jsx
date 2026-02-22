@@ -1,8 +1,8 @@
 import { addUserToActivity } from "@/lib/dal";
 
-export default async function aktiviteter({params}) {
+export default async function tilmeld({params}) {
 
-    const activty_id = (await params).activty_id 
+    const activty_id = (await params).activity_id 
    
     const aktiviteter = await addUserToActivity (activty_id);
 

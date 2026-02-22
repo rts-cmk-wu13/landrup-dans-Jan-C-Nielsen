@@ -11,6 +11,8 @@ export default async function aktiviteter({ params }) {
     const aktivitet = await getActivitie(id);
     console.log(aktivitet)
     const imageurl = aktivitet.asset.url;
+    const TilmeldUrl = "/tilmeld/"+id;
+
     return (
         <main className="absolute inset-0 bg-[#003147] w-[411px] mx-auto flex flex-col items-center text-white">
             <div className="" >
@@ -20,7 +22,7 @@ export default async function aktiviteter({ params }) {
                     height={482}
                     unoptimized
                 ></Image>
-                <Link href="/login" className="relative top-[-110px] left-[200px] rounded-[10px] pt-[13px] pb-[13px] bg-[#003147] text-white text-[18px] pl-[20px] pr-[20px]">Tilmeld her</Link>
+                <Link href={TilmeldUrl} className="relative top-[-110px] left-[200px] rounded-[10px] pt-[13px] pb-[13px] bg-[#003147] text-white text-[18px] pl-[20px] pr-[20px]">Tilmeld her</Link>
 
                 <div className="ml-[28px]">
                     <h2 className="text-[24px]"> {aktivitet.name}</h2>

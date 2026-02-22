@@ -41,12 +41,14 @@ export async function tellAllToThePriest() {
 
 
 
-export async function getUser(id) {
+export async function getUser(id=null) {
     try {
-        console.log("getUser(id):", id);
-
+      
         const cookieStore = await cookies();
         const accessTokenCookie = cookieStore.get("accessToken");
+        id = (!id) ? cookieStore.get("userid")?.value : id ;
+
+        console.log("getUser(id):", id);
 
         if (!accessTokenCookie) {
             console.error("Access token cookie not found");
@@ -93,21 +95,52 @@ export async function getUser(id) {
 }
 
 
-export async function addUserToActivity(user_id, activity_id) {
+
+export async function getActivitiesForInstructor() {
     try {
-        console.log("User id:", id);
+
+        const activities = await getAllActivities()
+        console.log("AllActivities :", activities);
+        const cookieStore = await cookies();
+        const accessTokenCookie = cookieStore.get("accessToken");
+        const user_id = cookieStore.get("userid")?.value;
+
+        if (!accessTokenCookie || !user_id) {
+            console.error("Access token/userid cookie not found");
+            redirect("/login");
+        }
+
+        const activitiesForInstructor = activities.filter((a) => (a.instructorId == user_id));
+        
+        return activitiesForInstructor;
+
+    } catch (error) {
+        console.log("getAllActivities error:", error);
+
+        return {
+            success: false,
+            message: "Fejl. Kunne ikke finde activities for instructor"
+        };
+    }
+}
+
+export async function addUserToActivity(activity_id) {
+
+    try {
+        console.log("activity_id:", activity_id);
 
         const cookieStore = await cookies();
         const accessTokenCookie = cookieStore.get("accessToken");
+        const user_id = cookieStore.get("userid");
 
-        if (!accessTokenCookie) {
-            console.error("Access token cookie not found");
+        if (!accessTokenCookie || !user_id) {
+            console.error("Access token/userid cookie not found");
             redirect("/login");
         }
 
         console.log("Access token:", accessTokenCookie.value);
 
-        const url = `http://localhost:4000/api/v1/users/${user_id}/activities/${activity_id}`;
+        const url = `http://localhost:4000/api/v1/users/${user_id.value}/activities/${activity_id}`;
         console.log("url:", url);
         const response = await fetch(
             url,
@@ -140,7 +173,7 @@ export async function addUserToActivity(user_id, activity_id) {
 
         return {
             success: false,
-            message: "Fejl. Kunne ikke hente user"
+            message: "Fejl. Kunne ikke tilmelde"
         };
     }
 }

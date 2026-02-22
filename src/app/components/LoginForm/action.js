@@ -60,11 +60,9 @@ export async function loginUser(prevState, formData) {
 
     const data = await response.json();
 
-    console.log("Token:" + data.token)
-    cookieStore.set("accessToken", data.accessToken);
-    cookieStore.set("username", data.name);
-
+    console.log("loginUser data: " , data)
+    cookieStore.set("accessToken", data.token);
+    cookieStore.set("userid", data.userId);
 
     return redirect("/")
-
 }

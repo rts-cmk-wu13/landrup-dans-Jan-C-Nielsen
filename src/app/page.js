@@ -7,6 +7,7 @@ import { tellAllToThePriest } from "../lib/dal.js"
 import KontaktForm from "./components/KontaktForm";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import Footer from "./components/footer";
 
 export default async function Home() {
 
@@ -80,6 +81,7 @@ export default async function Home() {
           <p className=" text-[18px] ">Tlf. 3540 4550</p>
 
         </section>
+        <Footer/>
       </main>
     </div>
   );

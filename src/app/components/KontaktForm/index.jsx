@@ -18,7 +18,7 @@ export default function KontaktForm() {
 
     return (
         <main className=" text-white m-[27]  flex flex-col  sm:items-start sm:text-left">
-            <h2  className="text-[36px]">Kontakt os</h2>
+            <h2  className="mb-[24] text-[36px]">Kontakt os</h2>
             <form className="w-full text-black block mx-auto  mb-[27] " action={formAction} noValidate>
                 <div >
                     <div>

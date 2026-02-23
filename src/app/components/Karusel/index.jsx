@@ -11,7 +11,7 @@ const len = vidnesbyrd.length;
   const  [index, setIndex] = useState(0);
 
     return (
-        <section className="text-white">
+        <section className="mb-[82px] text-white">
             <h3  className="m-[27] text-[28px] mb-[0px] font-semibold text-white text-center" >Det siger vores<br></br>
             kunder om os</h3>
             <DetSigerVoresKunderOmOsCard bodytext={vidnesbyrd[index].content}

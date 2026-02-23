@@ -3,7 +3,7 @@ export default function DetSigerVoresKunderOmOsCard({  bodytext, name, occupatio
 
 
     return (
-        <section className="m-[27px] flex flex-col items-center gap-6">
+        <section className="m-[27px]  flex flex-col items-center gap-6">
             <p className="text-center w-[239px] text-white text-[16]">
             {bodytext}  </p>
               <h2 className="  text-[20] text-bold  text-white">

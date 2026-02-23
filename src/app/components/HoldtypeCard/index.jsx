@@ -4,7 +4,7 @@ export default function HoldtypeCard({ headline, pic, bodytext }) {
 
 
     return (
-        <section className="m-[27px] flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+        <section className="m-[27px] flex flex-col gap-6  sm:items-start sm:text-left">
             <h2 className=" max-w-xs text-[24px]  text-white">
                 {headline} 
             </h2>

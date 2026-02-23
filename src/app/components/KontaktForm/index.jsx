@@ -23,15 +23,15 @@ export default function KontaktForm() {
                 <div >
                     <div>
                         <input  className="bg-white mb-8 p-[13] w-full"  placeholder="Navn" type="text" name="navn" defaultValue={state.values.navn}></input>
-                        {state.errors?.navn && <p>{state.errors.navn}</p>}
+                        {state.errors?.navn && <p  className="bg-[#ff0000] text-white  mb-8">{state.errors.navn}</p>}
                     </div>
                     <div>
                         <input   className="bg-white  mb-8 p-[13]  w-full"  placeholder="Email" type="email" name="email" defaultValue={state.values.email}></input>
-                        {state.errors?.email && <p>{state.errors.email}</p>}
+                        {state.errors?.email && <p  className="bg-[#ff0000] text-white  mb-8">{state.errors.email}</p>}
                     </div>
                     <div>
                         <textarea className="bg-white  mb-8 p-[13] w-full h-50" placeholder="Besked" type="text" name="besked" defaultValue={state.values.besked}></textarea>
-                        {state.errors?.besked && <p>{state.errors.besked}</p>}
+                        {state.errors?.besked && <p  className="bg-[#ff0000] text-white  mb-8">{state.errors.besked}</p>}
                     </div>
                 </div>
                 {state.errors?.form && <p>{state.errors.form}</p>}

@@ -1,10 +1,12 @@
 import { addUserToActivity } from "@/lib/dal";
 
-export default async function tilmeld({params}) {
+import { redirect } from "next/navigation";
 
-    const activty_id = (await params).activity_id 
-   
-    const aktiviteter = await addUserToActivity (activty_id);
+export default async function tilmeld({ params }) {
 
-    console.log(aktiviteter);
+    const activty_id = (await params).activity_id
+
+    const aktiviteter = await addUserToActivity(activty_id);
+
+    redirect('/profil')
 }

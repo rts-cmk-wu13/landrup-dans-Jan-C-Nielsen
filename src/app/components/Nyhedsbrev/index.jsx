@@ -24,7 +24,7 @@ export default function Nyhedsbrev() {
                    <div>
                     <div>
                         <input   placeholder="Email" className = " w-full p-[13]  bg-white text-black mr-[27px]" type="email" name="email" defaultValue={state.values.email}></input>
-                        {state.errors?.email && <p>{state.errors.email}</p>}
+                        {state.errors?.email && <p className="bg-[#ff0000] text-white  mb-8">{state.errors.email}</p>}
                     </div>
 
                 </div>

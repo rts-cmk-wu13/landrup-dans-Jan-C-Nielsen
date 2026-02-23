@@ -41,12 +41,12 @@ export async function tellAllToThePriest() {
 
 
 
-export async function getUser(id=null) {
+export async function getUser(id = null) {
     try {
-      
+
         const cookieStore = await cookies();
         const accessTokenCookie = cookieStore.get("accessToken");
-        id = (!id) ? cookieStore.get("userid")?.value : id ;
+        id = (!id) ? cookieStore.get("userid")?.value : id;
 
         console.log("getUser(id):", id);
 
@@ -87,10 +87,7 @@ export async function getUser(id=null) {
     } catch (error) {
         console.log("getUser error:", error);
 
-        return {
-            success: false,
-            message: "Fejl. Kunne ikke hente user"
-        };
+        return (redirect("/login"));
     }
 }
 
@@ -111,7 +108,7 @@ export async function getActivitiesForInstructor() {
         }
 
         const activitiesForInstructor = activities.filter((a) => (a.instructorId == user_id));
-        
+
         return activitiesForInstructor;
 
     } catch (error) {
@@ -124,7 +121,14 @@ export async function getActivitiesForInstructor() {
     }
 }
 
-export async function addUserToActivity(activity_id) {
+
+
+export async function removeUserFromActivity(activity_id) {
+   return addUserToActivity(activity_id, "DELETE")
+}
+
+
+export async function addUserToActivity(activity_id, met="POST") {
 
     try {
         console.log("activity_id:", activity_id);
@@ -145,7 +149,7 @@ export async function addUserToActivity(activity_id) {
         const response = await fetch(
             url,
             {
-                method: "POST",
+                method: met,
                 headers: {
                     Authorization: `Bearer ${accessTokenCookie.value}`
                 }
@@ -218,6 +222,13 @@ export async function getAllActivities(searchStr = null) {
     }
 }
 
+export async function isUserRegistered(activity) {
+
+    const cookieStore = await cookies();
+    const user_id = cookieStore.get("userid");
+
+    return activity.users.find((u) => (u.id == user_id.value)) !== undefined;
+}
 
 export async function getActivitie(id) {
     console.log("getActivitie:" + id);

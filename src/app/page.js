@@ -15,8 +15,8 @@ export default async function Home() {
   console.log(vidnesbyrd)
 
   return (
-    <div className="m-[27]  flex items-center justify-center">
-      <main className="  bg-[#003147]">
+    <div className=" m-[27] flex items-center justify-center">
+      <main className=" flex-1 pb-24  bg-[#003147]">
 
         <section className=" w-full h-screen text-[36px] font-bold  relative text-white">
           <Image
@@ -81,7 +81,7 @@ export default async function Home() {
           <p className=" text-[18px] ">Tlf. 3540 4550</p>
 
         </section>
-        <Footer/>
+        <Footer />
       </main>
     </div>
   );

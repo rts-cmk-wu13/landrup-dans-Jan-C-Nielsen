@@ -1,17 +1,12 @@
-
-
-
 import Image from "next/image";
-
 import Link from "next/link";
-
 
 export default function Footer() {
 
 
     return (
-        <footer className="bg-white mx-auto w-[411px]">
-            <div className=" flex gap-10 mx-auto max-w-7xl px-2 py-2 text-center">
+        <footer className="fixed bottom-0 left-0 w-full bg-white mx-auto w-[411px]">
+            <div className=" flex justify-evenly mx-auto max-w-7xl px-2 py-2 text-center">
                 {/* Clickable images */}
                 <Link href="/" >
                    

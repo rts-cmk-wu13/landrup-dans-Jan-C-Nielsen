@@ -5,10 +5,14 @@ import Link from "next/link";
 
 import { MineHoldCard, TilMeldteHoldCard } from "@/app/components/MineHoldCard";
 import Footer from "../components/footer";
+import { redirect } from "next/navigation";
 
 export default async function profil() {
     const user = await getUser();
     console.log(user)
+
+    if (!user)
+        redirect("/");
 
     let activities = [];
     if (user.role === "instructor") {

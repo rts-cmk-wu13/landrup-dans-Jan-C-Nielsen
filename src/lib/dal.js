@@ -51,8 +51,9 @@ export async function getUser(id = null) {
         console.log("getUser(id):", id);
 
         if (!accessTokenCookie) {
-            console.error("Access token cookie not found");
-            redirect("/login");
+            console.log("Access token cookie not found");
+            return null;
+           // redirect("/login");
         }
 
         console.log("Access token:", accessTokenCookie.value);
@@ -187,6 +188,10 @@ export async function getAllActivities(searchStr = null) {
     console.log("getAllActivities");
 
     try {
+        const user = await getUser();// det burde testes om user er logget ind
+        const  age =  user ? user.age : 0;
+        const  role =  user ? user.role : "default";
+console.log(role)
         const response = await fetch("http://localhost:4000/api/v1/activities");
 
         //Response.ok is false for 404.
@@ -203,6 +208,12 @@ export async function getAllActivities(searchStr = null) {
 
         if (contentType && contentType.includes("application/json")) {
             let data = await response.json();
+
+            //Filtrer aktiviteter væk baseret på brugerens alder
+            if (role !== "instructor" && age > 0) {
+                data = data.filter((item) => (item.maxAge >= age && item.minAge <= age))
+            }
+
             //søg aktivitets-titel, ugedag og intruktørnavn.
             if (searchStr) {
                 data = data.filter((item) => (item.name.includes(searchStr) || item.weekday.includes(searchStr)))
@@ -228,6 +239,15 @@ export async function isUserRegistered(activity) {
     const user_id = cookieStore.get("userid");
 
     return activity.users.find((u) => (u.id == user_id.value)) !== undefined;
+}
+
+
+export async function isUserInstructor() {
+
+    const cookieStore = await cookies();
+    const user_id = cookieStore.get("userid");
+    const user = await  getUser(user_id);
+    return user.role === "instructor";
 }
 
 export async function getActivitie(id) {

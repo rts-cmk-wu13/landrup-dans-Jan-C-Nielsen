@@ -87,7 +87,6 @@ export async function getUser(id = null) {
 
     } catch (error) {
         console.log("getUser error:", error);
-
         return   null
     }
 }
@@ -96,7 +95,6 @@ export async function getUser(id = null) {
 
 export async function getActivitiesForInstructor() {
     try {
-
         const activities = await getAllActivities()
         console.log("AllActivities :", activities);
         const cookieStore = await cookies();
@@ -216,7 +214,8 @@ console.log(role)
 
             //søg aktivitets-titel, ugedag og intruktørnavn.
             if (searchStr) {
-                data = data.filter((item) => (item.name.includes(searchStr) || item.weekday.includes(searchStr)))
+                searchStr = searchStr.trim().toLowerCase();
+                data = data.filter((item) => (item.name.toLowerCase().includes(searchStr) || item.weekday.toLowerCase().includes(searchStr)))
             }
             return data;
         }

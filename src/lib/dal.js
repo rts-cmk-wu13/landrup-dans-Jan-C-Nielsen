@@ -137,7 +137,7 @@ export async function addUserToActivity(activity_id, met="POST") {
         const user_id = cookieStore.get("userid");
 
         if (!accessTokenCookie || !user_id) {
-            console.error("Access token/userid cookie not found");
+            console.log("Access token/userid cookie not found");
             redirect("/login");
         }
 
@@ -237,7 +237,7 @@ export async function isUserRegistered(activity) {
     const cookieStore = await cookies();
     const user_id = cookieStore.get("userid");
 
-    return activity.users.find((u) => (u.id == user_id.value)) !== undefined;
+    return user_id ? activity.users.find((u) => (u.id == user_id.value)) !== undefined : false;
 }
 
 

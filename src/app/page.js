@@ -15,10 +15,10 @@ export default async function Home() {
   console.log(vidnesbyrd)
 
   return (
-    <div className="  flex items-center justify-center">
-      <main className=" flex-1 pb-24  bg-[#003147]">
+    <div className=" mx-auto  w-[411px] flex items-center justify-center">
+      <main className="flex-1 pb-24  bg-[#003147]">
 
-        <section className=" w-full h-screen text-[36px] font-bold  relative text-white">
+        <section className=" h-screen text-[36px] font-bold  relative text-white">
           <Image
             className="object-cover"
             src="/heroimg.jpg"

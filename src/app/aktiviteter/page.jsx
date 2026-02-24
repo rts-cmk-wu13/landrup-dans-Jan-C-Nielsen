@@ -13,7 +13,7 @@ export default async function aktiviteter({searchParams}) {
     console.log(aktiviteter)
 
     return (
-        <main className="bg-[#003147] w-[411px] mx-auto flex flex-col items-center justify-center text-white">
+        <main className="flex-1 pb-24 bg-[#003147] w-[411px] mx-auto flex flex-col items-center justify-center text-white">
             <SearchPage/>
             <h2 className="ml-[27] text-[36px] self-start w-full text-left">Aktiviteter</h2>
             <ul>

@@ -19,7 +19,7 @@ export default async function aktiviteter({ params }) {
     const TilmeldText = UserRegistered ? "Frameld her" : "Tilmeld her";
 
     return (
-        <main className="absolute inset-0 bg-[#003147] w-[411px] mx-auto flex flex-col items-center text-white">
+        <main className="flex-1 pb-24 absolute inset-0 bg-[#003147] w-[411px] mx-auto flex flex-col items-center text-white">
             <div className="" >
                 <Image src={imageurl}
                     alt={aktivitet.asset.url}

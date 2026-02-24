@@ -88,7 +88,7 @@ export async function getUser(id = null) {
     } catch (error) {
         console.log("getUser error:", error);
 
-        return (redirect("/login"));
+        return   null
     }
 }
 
